@@ -1,0 +1,65 @@
+
+
+### 💾 4. Persistência simples (salvar o saldo)
+
+Use arquivos para salvar o saldo entre execuções, com criptografia básica para ocultar os dados.
+
+---
+
+
+### 👥 1. Múltiplas contas (registro e login)
+
+Permita cadastrar mais de um cliente:
+
+```java
+Cliente c1 = new Cliente("Pedro", "1234");
+Cliente c2 = new Cliente("João", "abcd");
+```
+
+E depois peça login antes de acessar o menu:
+
+```java
+System.out.print("Usuário: ");
+String nome = scanner.nextLine();
+System.out.print("Senha: ");
+String senha = scanner.nextLine();
+```
+
+---
+
+### 💳 2. Histórico de transações (extrato)
+
+Crie uma `List<String>` dentro da classe `Conta`:
+
+```java
+private List<String> historico = new ArrayList<>();
+
+public void depositar(double valor) {
+    saldo += valor;
+    historico.add("Depósito de R$ " + valor);
+}
+```
+
+E depois:
+
+```java
+public void mostrarHistorico() {
+    historico.forEach(System.out::println);
+}
+```
+
+
+---
+
+### 🔐 4. Senha para saque
+
+Peça senha antes de sacar:
+
+```java
+System.out.print("Digite sua senha: ");
+String tentativa = scanner.nextLine();
+if (!tentativa.equals(this.senha)) {
+    System.out.println("Senha incorreta!");
+    return;
+}
+```

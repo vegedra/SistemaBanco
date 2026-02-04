@@ -28,8 +28,15 @@ public class Conta {
         System.out.printf("\nSaldo: R$ %.2f", saldo);
         InputManager.pause();
     }
+
     public void fazerDeposito() {
         System.out.print("\nValor do depósito: ");
+
+        // Verifica se o input é válido
+        if (!InputManager.verify("double")) {
+            return; // volta pro menu
+        }
+
         double valor = InputManager.scanner.nextDouble();
 
         if (valor > 0) {
@@ -40,8 +47,15 @@ public class Conta {
         }
         mostrarSaldo();
     }
+
     public void fazerSaque() {
         System.out.print("\nValor do saque: ");
+
+        // Verifica se o input é válido
+        if (!InputManager.verify("double")) {
+            return; // volta pro menu
+        }
+
         double valor = InputManager.scanner.nextDouble();
 
         if (valor > 0 && valor <= saldo) {

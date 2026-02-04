@@ -9,6 +9,8 @@ TODO:
 
 package com.github.vegedra.banco;
 
+import java.util.InputMismatchException;
+
 public class Main {
 
     // Variaveis
@@ -18,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
 
         Conta conta = new Conta("user");
+        int ch;
 
         do {
             System.out.println("\n*********************");
@@ -30,8 +33,15 @@ public class Main {
             System.out.println("4) Sair");
             System.out.println("*********************");
 
+            // Input
             System.out.print("\n> ");
-            int ch = InputManager.scanner.nextInt();
+
+            // Verifica se o input é válido
+            if (!InputManager.verify("int")) {
+                continue; // volta pro menu
+            }
+
+            ch = InputManager.scanner.nextInt();
 
             // Opçções
             switch (ch) {

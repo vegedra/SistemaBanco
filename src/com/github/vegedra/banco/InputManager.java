@@ -3,6 +3,7 @@
 
 package com.github.vegedra.banco;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputManager {
@@ -10,6 +11,25 @@ public class InputManager {
 
     // Construtor
     private InputManager() {}
+
+    // Verifica o input
+    public static boolean verify(String type) {
+        if (type.equals("int")) {
+            if (!scanner.hasNextInt()) {
+                System.out.println("Entrada inválida!");
+                scanner.next(); // descarta lixo
+                return false;
+            }
+        }
+        else if (type.equals("double")) {
+            if (!scanner.hasNextDouble()) {
+                System.out.println("Entrada inválida!");
+                scanner.next(); // descarta lixo
+                return false;
+            }
+        }
+        return true;
+    }
 
     // Pausa o programa
     public static void pause() {
